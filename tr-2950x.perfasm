@@ -1,0 +1,634 @@
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.openjdk.jmh.util.Utils (file:/home/shade/benchmarks.jar) to field java.io.PrintStream.charOut
+WARNING: Please consider reporting this to the maintainers of org.openjdk.jmh.util.Utils
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+# JMH version: 1.23
+# VM version: JDK 11.0.7-testing, OpenJDK 64-Bit Server VM, 11.0.7-testing+0-builds.shipilev.net-openjdk-jdk11-b223-20200418
+# VM invoker: /home/shade/jdk/bin/java
+# VM options: <none>
+# Warmup: 3 iterations, single-shot each
+# Measurement: 3 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: org.openjdk.PiBench.test
+# Parameters: (max = 10000000, min = 2)
+
+# Run progress: 0.00% complete, ETA 00:00:00
+# Fork: 1 of 1
+# Preparing profilers: LinuxPerfAsmProfiler 
+# Profilers consume stdout and stderr from target VM, use -v EXTRA to copy to console
+# Warmup Iteration   1: 24.776 s/op
+# Warmup Iteration   2: 22.753 s/op
+# Warmup Iteration   3: 22.447 s/op
+Iteration   1: 23.159 s/op
+Iteration   2: 22.894 s/op
+Iteration   3: 23.038 s/op
+# Processing profiler results: LinuxPerfAsmProfiler 
+
+
+Result "org.openjdk.PiBench.test":
+  N = 3
+  mean =     23.030 ±(99.9%) 2.423 s/op
+
+  Histogram, s/op:
+    [22.800, 22.825) = 0 
+    [22.825, 22.850) = 0 
+    [22.850, 22.875) = 0 
+    [22.875, 22.900) = 1 
+    [22.900, 22.925) = 0 
+    [22.925, 22.950) = 0 
+    [22.950, 22.975) = 0 
+    [22.975, 23.000) = 0 
+    [23.000, 23.025) = 0 
+    [23.025, 23.050) = 1 
+    [23.050, 23.075) = 0 
+    [23.075, 23.100) = 0 
+    [23.100, 23.125) = 0 
+    [23.125, 23.150) = 0 
+    [23.150, 23.175) = 1 
+    [23.175, 23.200) = 0 
+
+  Percentiles, s/op:
+      p(0.0000) =     22.894 s/op
+     p(50.0000) =     23.038 s/op
+     p(90.0000) =     23.159 s/op
+     p(95.0000) =     23.159 s/op
+     p(99.0000) =     23.159 s/op
+     p(99.9000) =     23.159 s/op
+     p(99.9900) =     23.159 s/op
+     p(99.9990) =     23.159 s/op
+     p(99.9999) =     23.159 s/op
+    p(100.0000) =     23.159 s/op
+
+Secondary result "org.openjdk.PiBench.test:·asm":
+PrintAssembly processed: 243049 total address lines.
+Perf output processed (skipped 72.614 seconds):
+ Column 1: cycles (68920 events)
+
+Hottest code regions (>10.00% "cycles" events):
+
+....[Hottest Region 1]..............................................................................
+c2, level 4, java.math.BigInteger::oddModPow, version 843 (1260 bytes) 
+
+                       0x00007f17b056e17f: add    $0xfffffffffffffff8,%r11  ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                                                                     ; - java.math.MutableBigInteger::&lt;init&gt;@11 (line 112)
+                                                                     ; - java.math.MutableBigInteger::divideKnuth@178 (line 1207)
+                                                                     ; - java.math.MutableBigInteger::divide@27 (line 1153)
+                                                                     ; - java.math.MutableBigInteger::divide@4 (line 1147)
+                                                                     ; - java.math.BigInteger::oddModPow@260 (line 2978)
+                       0x00007f17b056e183: mov    %r11,0x70(%r15)    ;*invokestatic arraycopy {reexecute=0 rethrow=0 return_oop=0}
+                                                                     ; - java.math.BigInteger::leftShift@59 (line 2607)
+                                                                     ; - java.math.BigInteger::oddModPow@213 (line 2970)
+                       0x00007f17b056e187: mov    0x94(%rsp),%r11d
+  0.01%                0x00007f17b056e18f: inc    %r11d              ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                                                                     ; - java.math.BigInteger::primitiveLeftShift@66 (line 2636)
+                                                                     ; - java.math.BigInteger::leftShift@69 (line 2608)
+                                                                     ; - java.math.BigInteger::oddModPow@213 (line 2970)
+                       0x00007f17b056e192: mov    %r11d,0x94(%rsp)
+  0.01%                0x00007f17b056e19a: cmp    0xc(%rsp),%r11d
+  0.00%                0x00007f17b056e19f: jl     0x00007f17b056dfad  ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                                                                     ; - java.math.MutableBigInteger::&lt;init&gt;@11 (line 112)
+                                                                     ; - java.math.MutableBigInteger::divideKnuth@178 (line 1207)
+                                                                     ; - java.math.MutableBigInteger::divide@27 (line 1153)
+                                                                     ; - java.math.MutableBigInteger::divide@4 (line 1147)
+                                                                     ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.01%                0x00007f17b056e1a5: mov    0x108(%r15),%r10   ; ImmutableOopMap{[0]=Derived_oop_[56] [32]=Derived_oop_[128] [56]=Oop [88]=NarrowOop [96]=Oop [112]=Oop [128]=Oop [160]=Oop [168]=Oop }
+                                                                     ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                                                                     ; - java.math.BigInteger::oddModPow@385 (line 2996)
+  0.00%                0x00007f17b056e1ac: test   %eax,(%r10)        ;*invokevirtual divideOneWord {reexecute=0 rethrow=0 return_oop=0}
+                                                                     ; - java.math.MutableBigInteger::divideKnuth@150 (line 1203)
+                                                                     ; - java.math.MutableBigInteger::divide@27 (line 1153)
+                                                                     ; - java.math.MutableBigInteger::divide@4 (line 1147)
+                                                                     ; - java.math.BigInteger::oddModPow@260 (line 2978)
+                                                                     ;   {poll}
+  0.03%                0x00007f17b056e1af: cmp    0x6c(%rsp),%r11d
+  0.00%                0x00007f17b056e1b4: jl     0x00007f17b056df80
+                       0x00007f17b056e1ba: mov    0x5c(%rsp),%r10d
+  0.16%                0x00007f17b056e1bf: dec    %r10d
+                       0x00007f17b056e1c2: mov    %r10d,0x38(%rsp)
+  0.02%                0x00007f17b056e1c7: mov    %r10d,%ecx
+  0.00%                0x00007f17b056e1ca: and    $0x1f,%ecx
+  0.00%                0x00007f17b056e1cd: mov    $0x1,%r10d
+  0.00%                0x00007f17b056e1d3: shl    %cl,%r10d          ;*aastore {reexecute=0 rethrow=0 return_oop=0}
+                                                                     ; - java.math.BigInteger::oddModPow@161 (line 2962)
+  0.02%                0x00007f17b056e1d6: mov    %r10d,0x78(%rsp)
+  0.03%                0x00007f17b056e1db: mov    0x68(%rsp),%r11d
+  0.01%                0x00007f17b056e1e0: cmp    $0x7ffffffe,%r11d
+  0.00%                0x00007f17b056e1e7: jg     0x00007f17b056f80e  ;*invokevirtual divide {reexecute=0 rethrow=0 return_oop=0}
+                                                                     ; - java.math.MutableBigInteger::divide@4 (line 1147)
+                                                                     ; - java.math.BigInteger::oddModPow@260 (line 2978)
+                       0x00007f17b056e1ed: mov    0x68(%rsp),%edi
+  0.02%                0x00007f17b056e1f1: inc    %edi
+                       0x00007f17b056e1f3: xor    %r8d,%r8d
+  0.00%                0x00007f17b056e1f6: xor    %r11d,%r11d        ;*if_icmpge {reexecute=0 rethrow=0 return_oop=0}
+                                                                     ; - java.math.BigInteger::materialize@7 (line 2837)
+                                                                     ; - java.math.BigInteger::montgomeryMultiply@47 (line 2799)
+                                                                     ; - java.math.BigInteger::oddModPow@674 (line 3068)
+  0.00%   ↗            0x00007f17b056e1f9: mov    0x68(%rsp),%ecx
+  0.04%   │            0x00007f17b056e1fd: sub    %r8d,%ecx
+  0.00%   │            0x00007f17b056e200: inc    %ecx
+  0.01%   │            0x00007f17b056e202: mov    $0x3e8,%r10d
+          │            0x00007f17b056e208: cmp    %r10d,%ecx
+  0.03%   │            0x00007f17b056e20b: mov    $0x3e8,%r9d
+  0.00%   │            0x00007f17b056e211: cmovg  %r9d,%ecx
+  0.06%   │            0x00007f17b056e215: add    %r8d,%ecx
+  0.04%   │            0x00007f17b056e218: nopl   0x0(%rax,%rax,1)   ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+          │                                                          ; - java.math.BigInteger::materialize@11 (line 2838)
+          │                                                          ; - java.math.BigInteger::montgomerySquare@42 (line 2810)
+          │                                                          ; - java.math.BigInteger::oddModPow@334 (line 2990)
+         ↗│            0x00007f17b056e220: mov    0x78(%rsp),%r10d
+  0.30%  ││            0x00007f17b056e225: mov    0x58(%rsp),%r9d
+  0.00%  ││            0x00007f17b056e22a: and    0x10(%r12,%r9,8),%r10d
+  0.05%  ││            0x00007f17b056e22f: test   %r10d,%r10d
+  0.01%  ││            0x00007f17b056e232: setne  %r9b
+  0.08%  ││            0x00007f17b056e236: movzbl %r9b,%r9d
+  0.09%  ││            0x00007f17b056e23a: or     %r11d,%r9d
+  0.05%  ││            0x00007f17b056e23d: mov    0x78(%rsp),%r10d
+  0.00%  ││            0x00007f17b056e242: shr    %r10d              ;*aastore {reexecute=0 rethrow=0 return_oop=0}
+         ││                                                          ; - java.math.BigInteger::oddModPow@161 (line 2962)
+  0.00%  ││            0x00007f17b056e245: mov    %r10d,0x78(%rsp)
+  0.01%  ││            0x00007f17b056e24a: test   %r10d,%r10d
+  0.01%  ││            0x00007f17b056e24d: je     0x00007f17b056f582  ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+         ││                                                          ; - java.math.BigInteger::primitiveLeftShift@74 (line 2641)
+         ││                                                          ; - java.math.BigInteger::leftShift@69 (line 2608)
+         ││                                                          ; - java.math.BigInteger::oddModPow@213 (line 2970)
+  0.04%  ││            0x00007f17b056e253: mov    %r9d,%r11d
+  0.00%  ││            0x00007f17b056e256: shl    %r11d              ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+         ││                                                          ; - java.math.BigInteger::materialize@11 (line 2838)
+         ││                                                          ; - java.math.BigInteger::montgomerySquare@42 (line 2810)
+         ││                                                          ; - java.math.BigInteger::oddModPow@334 (line 2990)
+  0.02%  ││            0x00007f17b056e259: inc    %r8d               ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+         ││                                                          ; - java.math.BigInteger::primitiveLeftShift@74 (line 2641)
+         ││                                                          ; - java.math.BigInteger::leftShift@69 (line 2608)
+         ││                                                          ; - java.math.BigInteger::oddModPow@213 (line 2970)
+  0.02%  ││            0x00007f17b056e25c: cmp    %ecx,%r8d
+  0.00%  ╰│            0x00007f17b056e25f: jl     0x00007f17b056e220  ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+          │                                                          ; - java.math.MutableBigInteger::&lt;init&gt;@11 (line 112)
+          │                                                          ; - java.math.MutableBigInteger::divideKnuth@178 (line 1207)
+          │                                                          ; - java.math.MutableBigInteger::divide@27 (line 1153)
+          │                                                          ; - java.math.MutableBigInteger::divide@4 (line 1147)
+          │                                                          ; - java.math.BigInteger::oddModPow@260 (line 2978)
+          │            0x00007f17b056e261: mov    0x108(%r15),%r10   ; ImmutableOopMap{[32]=Derived_oop_[128] [88]=NarrowOop [96]=Oop [112]=Oop [128]=Oop [160]=Oop [168]=Oop }
+          │                                                          ;*goto {reexecute=1 rethrow=0 return_oop=0}
+          │                                                          ; - java.math.BigInteger::oddModPow@467 (line 3006)
+  0.00%   │            0x00007f17b056e268: test   %eax,(%r10)        ;*return {reexecute=0 rethrow=0 return_oop=0}
+          │                                                          ; - java.lang.Object::&lt;init&gt;@0 (line 50)
+          │                                                          ; - java.math.MutableBigInteger::&lt;init&gt;@1 (line 111)
+          │                                                          ; - java.math.MutableBigInteger::divideKnuth@178 (line 1207)
+          │                                                          ; - java.math.MutableBigInteger::divide@27 (line 1153)
+          │                                                          ; - java.math.MutableBigInteger::divide@4 (line 1147)
+          │                                                          ; - java.math.BigInteger::oddModPow@260 (line 2978)
+          │                                                          ;   {poll}
+  0.01%   │            0x00007f17b056e26b: cmp    %edi,%r8d
+          ╰            0x00007f17b056e26e: jl     0x00007f17b056e1f9
+                       0x00007f17b056e270: mov    0x5c(%rsp),%r10d
+  0.02%                0x00007f17b056e275: sub    0x68(%rsp),%r10d
+                       0x00007f17b056e27a: dec    %r10d              ;*aastore {reexecute=0 rethrow=0 return_oop=0}
+                                                                     ; - java.math.BigInteger::oddModPow@161 (line 2962)
+  0.01%                0x00007f17b056e27d: mov    %r10d,0x5c(%rsp)
+  0.02%                0x00007f17b056e282: test   $0x1,%r9d
+  0.01%    ╭           0x00007f17b056e289: jne    0x00007f17b056e2b3  ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+           │                                                         ; - java.math.BigInteger::materialize@11 (line 2838)
+           │                                                         ; - java.math.BigInteger::montgomerySquare@42 (line 2810)
+           │                                                         ; - java.math.BigInteger::oddModPow@334 (line 2990)
+           │           0x00007f17b056e28b: nopl   0x0(%rax,%rax,1)   ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+           │                                                         ; - java.math.MutableBigInteger::&lt;init&gt;@11 (line 112)
+           │                                                         ; - java.math.MutableBigInteger::divideKnuth@178 (line 1207)
+           │                                                         ; - java.math.MutableBigInteger::divide@27 (line 1153)
+           │                                                         ; - java.math.MutableBigInteger::divide@4 (line 1147)
+           │                                                         ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.00%    │↗          0x00007f17b056e290: mov    0x108(%r15),%r10
+  0.00%    ││          0x00007f17b056e297: shr    %r9d               ;*if_icmpge {reexecute=0 rethrow=0 return_oop=0}
+           ││                                                        ; - java.math.MutableBigInteger::normalize@40 (line 398)
+           ││                                                        ; - java.math.BigInteger::oddModPow@251 (line 2975)
+           ││          0x00007f17b056e29a: mov    0x5c(%rsp),%r8d
+  0.02%    ││          0x00007f17b056e29f: inc    %r8d               ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+           ││                                                        ; - java.math.BigInteger::primitiveLeftShift@74 (line 2641)
+           ││                                                        ; - java.math.BigInteger::leftShift@69 (line 2608)
+           ││                                                        ; - java.math.BigInteger::oddModPow@213 (line 2970)
+           ││          0x00007f17b056e2a2: mov    %r8d,0x5c(%rsp)    ; ImmutableOopMap{[32]=Derived_oop_[128] [88]=NarrowOop [96]=Oop [112]=Oop [128]=Oop [160]=Oop [168]=Oop }
+           ││                                                        ;*goto {reexecute=1 rethrow=0 return_oop=0}
+           ││                                                        ; - java.math.BigInteger::oddModPow@503 (line 3025)
+  0.01%    ││          0x00007f17b056e2a7: test   %eax,(%r10)        ;*return {reexecute=0 rethrow=0 return_oop=0}
+           ││                                                        ; - java.lang.Object::&lt;init&gt;@0 (line 50)
+           ││                                                        ; - java.math.MutableBigInteger::&lt;init&gt;@1 (line 111)
+           ││                                                        ; - java.math.MutableBigInteger::divideKnuth@178 (line 1207)
+           ││                                                        ; - java.math.MutableBigInteger::divide@27 (line 1153)
+           ││                                                        ; - java.math.MutableBigInteger::divide@4 (line 1147)
+           ││                                                        ; - java.math.BigInteger::oddModPow@260 (line 2978)
+           ││                                                        ;   {poll}
+  0.00%    ││          0x00007f17b056e2aa: test   $0x1,%r9d
+           │╰          0x00007f17b056e2b1: je     0x00007f17b056e290
+           ↘           0x00007f17b056e2b3: shr    %r9d               ;*aastore {reexecute=0 rethrow=0 return_oop=0}
+                                                                     ; - java.math.BigInteger::oddModPow@161 (line 2962)
+                       0x00007f17b056e2b6: cmp    0x6c(%rsp),%r9d
+  0.02%                0x00007f17b056e2bb: jae    0x00007f17b056f822
+  0.03%                0x00007f17b056e2c1: mov    0x5c(%rsp),%r10d
+  0.11%                0x00007f17b056e2c6: cmp    0x38(%rsp),%r10d
+  0.00%      ╭         0x00007f17b056e2cb: jne    0x00007f17b056e2d5  ;*if_icmpge {reexecute=0 rethrow=0 return_oop=0}
+             │                                                       ; - java.math.MutableBigInteger::clear@20 (line 243)
+             │                                                       ; - java.math.MutableBigInteger::divideKnuth@128 (line 1200)
+             │                                                       ; - java.math.MutableBigInteger::divide@27 (line 1153)
+             │                                                       ; - java.math.MutableBigInteger::divide@4 (line 1147)
+             │                                                       ; - java.math.BigInteger::oddModPow@260 (line 2978)
+             │         0x00007f17b056e2cd: xor    %r10d,%r10d
+             │         0x00007f17b056e2d0: mov    %r10d,0x54(%rsp)   ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+             │                                                       ; - java.math.BigInteger::primitiveLeftShift@77 (line 2641)
+             │                                                       ; - java.math.BigInteger::leftShift@69 (line 2608)
+             │                                                       ; - java.math.BigInteger::oddModPow@213 (line 2970)
+             ↘         0x00007f17b056e2d5: mov    0x70(%rsp),%r10
+                       0x00007f17b056e2da: mov    0x10(%r10,%r9,4),%r11d
+  0.07%                0x00007f17b056e2df: mov    %r11,%r9
+                       0x00007f17b056e2e2: shl    $0x3,%r9           ;*aastore {reexecute=0 rethrow=0 return_oop=0}
+                                                                     ; - java.math.BigInteger::oddModPow@161 (line 2962)
+                       0x00007f17b056e2e6: mov    0x50(%rsp),%r11d
+  0.02%                0x00007f17b056e2eb: mov    %r11d,0x94(%rsp)
+                       0x00007f17b056e2f3: xor    %r8d,%r8d
+                       0x00007f17b056e2f6: xor    %r10d,%r10d
+                       0x00007f17b056e2f9: mov    %r10d,0xb0(%rsp)
+  0.02%       ╭        0x00007f17b056e301: jmpq   0x00007f17b056e4e0
+  0.01%       │        0x00007f17b056e306: test   %ebp,%ebp
+  0.00%       │        0x00007f17b056e308: je     0x00007f17b056fcee
+              │        0x00007f17b056e30e: mov    0x78(%rsp),%r11d
+  0.26%       │        0x00007f17b056e313: cmp    %ebp,%r11d
+              │        0x00007f17b056e316: jae    0x00007f17b056fcee
+  0.00%       │        0x00007f17b056e31c: mov    0x3c(%rsp),%r11d
+  0.00%       │        0x00007f17b056e321: cmp    $0x40000,%r11d
+              │        0x00007f17b056e328: ja     0x00007f17b056fd3d  ;*ior {reexecute=0 rethrow=0 return_oop=0}
+              │                                                      ; - java.math.BigInteger::oddModPow@440 (line 3007)
+              │        0x00007f17b056e32e: mov    0x40(%rsp),%r10
+  0.00%       │        0x00007f17b056e333: shr    $0x3,%r10
+              │        0x00007f17b056e337: add    $0xfffffffffffffffe,%r10
+              │        0x00007f17b056e33b: mov    %r10,0x40(%rsp)
+              │        0x00007f17b056e340: xor    %ebp,%ebp
+  0.04%       │        0x00007f17b056e342: movabs $0x7f179e092000,%r10
+              │        0x00007f17b056e34c: mov    %r10,0xe0(%rsp)
+              │        0x00007f17b056e354: jmpq   0x00007f17b056ec1c  ;*invokevirtual compare {reexecute=0 rethrow=0 return_oop=0}
+              │                                                      ; - java.math.MutableBigInteger::divideKnuth@52 (line 1187)
+              │                                                      ; - java.math.MutableBigInteger::divide@27 (line 1153)
+              │                                                      ; - java.math.MutableBigInteger::divide@4 (line 1147)
+              │                                                      ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.01%       │     ↗  0x00007f17b056e359: mov    0xb4(%rsp),%r10d
+  0.00%       │     │  0x00007f17b056e361: shl    $0x3,%r10          ;*ifeq {reexecute=0 rethrow=0 return_oop=0}
+              │     │                                                ; - java.math.BigInteger::implMontgomeryMultiplyChecks@3 (line 2817)
+              │     │                                                ; - java.math.BigInteger::montgomeryMultiply@6 (line 2793)
+              │     │                                                ; - java.math.BigInteger::oddModPow@674 (line 3068)
+  0.04%       │     │  0x00007f17b056e365: mov    0xb4(%rsp),%r8d
+  0.05%       │     │  0x00007f17b056e36d: lea    0x10(%r12,%r8,8),%rsi  ;*invokevirtual compare {reexecute=0 rethrow=0 return_oop=0}
+              │     │                                                ; - java.math.MutableBigInteger::divideKnuth@52 (line 1187)
+              │     │                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+              │     │                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+              │     │                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.02%       │     │  0x00007f17b056e372: mov    0xa0(%rsp),%rdi
+  0.01%       │     │  0x00007f17b056e37a: add    $0x10,%rdi         ;*synchronization entry
+              │     │                                                ; - java.math.MutableBigInteger::compare@-1 (line 260)
+              │     │                                                ; - java.math.MutableBigInteger::divideKnuth@52 (line 1187)
+              │     │                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+              │     │                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+              │     │                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.03%       │     │  0x00007f17b056e37e: mov    0xa8(%rsp),%r9
+  0.01%       │     │  0x00007f17b056e386: add    $0x10,%r9          ;*getfield intLen {reexecute=0 rethrow=0 return_oop=0}
+              │     │                                                ; - java.math.MutableBigInteger::compare@1 (line 260)
+              │     │                                                ; - java.math.MutableBigInteger::divideKnuth@52 (line 1187)
+              │     │                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+              │     │                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+              │     │                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.00%       │     │  0x00007f17b056e38a: mov    0x20(%rsp),%rdx
+  0.00%       │     │  0x00007f17b056e38f: mov    0x90(%rsp),%ecx
+  0.06%       │     │  0x00007f17b056e396: mov    0x98(%rsp),%r8
+  0.04%       │     │  0x00007f17b056e39e: vzeroupper 
+  0.37%       │     │  0x00007f17b056e3a1: movabs $0x7f17c804c9a0,%r10
+  0.06%       │     │  0x00007f17b056e3ab: callq  *%r10
+  0.06%       │     │  0x00007f17b056e3ae: mov    %ebp,0x8c(%rsp)
+  0.01%       │     │  0x00007f17b056e3b5: mov    0xa0(%rsp),%r10
+  0.01%       │     │  0x00007f17b056e3bd: mov    0xa8(%rsp),%r11
+  0.04%       │     │  0x00007f17b056e3c5: mov    %r11,0xa0(%rsp)
+  0.01%       │     │  0x00007f17b056e3cd: mov    %r10,0xa8(%rsp)
+  0.01%       │     │  0x00007f17b056e3d5: xor    %r11d,%r11d
+  0.08%       │     │  0x00007f17b056e3d8: mov    %r11d,0x54(%rsp)   ;*aastore {reexecute=0 rethrow=0 return_oop=0}
+              │     │                                                ; - java.math.BigInteger::oddModPow@161 (line 2962)
+  0.03%       │    ↗│  0x00007f17b056e3dd: mov    0xa0(%rsp),%r10
+  0.53%       │    ││  0x00007f17b056e3e5: add    $0x10,%r10         ;*ifeq {reexecute=0 rethrow=0 return_oop=0}
+              │    ││                                                ; - java.math.MutableBigInteger::divideKnuth@156 (line 1204)
+              │    ││                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+              │    ││                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+              │    ││                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.08%       │    ││  0x00007f17b056e3e9: mov    %r10,0xb8(%rsp)
+  0.28%       │    ││  0x00007f17b056e3f1: mov    0xa0(%rsp),%r10
+  0.11%       │    ││  0x00007f17b056e3f9: mov    0xc(%r10),%ebp     ;*invokestatic arraycopy {reexecute=0 rethrow=0 return_oop=0}
+              │    ││                                                ; - java.math.BigInteger::leftShift@59 (line 2607)
+              │    ││                                                ; - java.math.BigInteger::oddModPow@213 (line 2970)
+  0.90%       │    ││  0x00007f17b056e3fd: mov    0x38(%rsp),%r10d
+  0.01%       │    ││  0x00007f17b056e402: cmp    $0x1,%r10d
+  0.00%       │    ││  0x00007f17b056e406: je     0x00007f17b056e73a  ;*return {reexecute=0 rethrow=0 return_oop=0}
+              │    ││                                                ; - java.lang.Object::&lt;init&gt;@0 (line 50)
+              │    ││                                                ; - java.math.MutableBigInteger::&lt;init&gt;@1 (line 111)
+              │    ││                                                ; - java.math.MutableBigInteger::divideKnuth@178 (line 1207)
+              │    ││                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+              │    ││                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+              │    ││                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+              │    ││  0x00007f17b056e40c: mov    0x54(%rsp),%r11d
+  0.02%       │    ││  0x00007f17b056e411: test   %r11d,%r11d
+  0.00%       │    ││  0x00007f17b056e414: jne    0x00007f17b056f5aa
+              │    ││  0x00007f17b056e41a: mov    0x7c(%rsp),%r10d
+  0.04%       │    ││  0x00007f17b056e41f: cmp    %ebp,%r10d
+  0.24%       │    ││  0x00007f17b056e422: jae    0x00007f17b056f5ca
+              │    ││  0x00007f17b056e428: mov    0x90(%rsp),%r11d
+  0.02%       │    ││  0x00007f17b056e430: cmp    0x8c(%rsp),%r11d
+  0.18%       │    ││  0x00007f17b056e438: jg     0x00007f17b056f64e  ;*if_icmpge {reexecute=0 rethrow=0 return_oop=0}
+              │    ││                                                ; - java.math.BigInteger::primitiveLeftShift@35 (line 2636)
+              │    ││                                                ; - java.math.BigInteger::leftShift@69 (line 2608)
+              │    ││                                                ; - java.math.BigInteger::oddModPow@213 (line 2970)
+              │    ││  0x00007f17b056e43e: mov    0x8c(%rsp),%r10d
+  0.04%       │    ││  0x00007f17b056e446: cmp    %r11d,%r10d
+  0.00%       │    ││  0x00007f17b056e449: jl     0x00007f17b056f6b2
+              │    ││  0x00007f17b056e44f: mov    0xa8(%rsp),%r8
+  0.05%       │    ││  0x00007f17b056e457: add    $0x10,%r8          ;*ifeq {reexecute=0 rethrow=0 return_oop=0}
+              │    ││                                                ; - java.math.MutableBigInteger::divideKnuth@156 (line 1204)
+              │    ││                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+              │    ││                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+              │    ││                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.00%       │    ││  0x00007f17b056e45b: mov    0xb8(%rsp),%rdi
+  0.54%       │    ││  0x00007f17b056e463: mov    0x20(%rsp),%rsi
+  0.20%       │    ││  0x00007f17b056e468: mov    %r11d,%edx
+  0.01%       │    ││  0x00007f17b056e46b: mov    0x98(%rsp),%rcx
+  0.07%       │    ││  0x00007f17b056e473: vzeroupper 
+  0.96%       │    ││  0x00007f17b056e476: movabs $0x7f17c804cb50,%r10
+  0.09%       │    ││  0x00007f17b056e480: callq  *%r10              ;*aload_0 {reexecute=0 rethrow=0 return_oop=0}
+              │    ││                                                ; - java.math.MutableBigInteger::clear@23 (line 244)
+              │    ││                                                ; - java.math.MutableBigInteger::divideKnuth@128 (line 1200)
+              │    ││                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+              │    ││                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+              │    ││                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.04%       │    ││  0x00007f17b056e483: mov    0x88(%rsp),%r8d
+  0.06%       │    ││  0x00007f17b056e48b: shl    %r8d               ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+              │    ││                                                ; - java.math.MutableBigInteger::&lt;init&gt;@11 (line 112)
+              │    ││                                                ; - java.math.MutableBigInteger::divideKnuth@178 (line 1207)
+              │    ││                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+              │    ││                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+              │    ││                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.01%       │    ││  0x00007f17b056e48e: mov    0x108(%r15),%r10
+  0.10%       │    ││  0x00007f17b056e495: mov    0xb4(%rsp),%r11d
+  0.02%       │    ││  0x00007f17b056e49d: mov    %r11,%r9
+  0.01%       │    ││  0x00007f17b056e4a0: shl    $0x3,%r9           ; ImmutableOopMap{r9=Oop [32]=Derived_oop_[128] [88]=NarrowOop [96]=Oop [112]=Oop [128]=Oop [160]=Oop [168]=Oop }
+              │    ││                                                ;*goto {reexecute=1 rethrow=0 return_oop=0}
+              │    ││                                                ; - java.math.BigInteger::oddModPow@735 (line 3081)
+  0.41%       │    ││  0x00007f17b056e4a4: test   %eax,(%r10)        ;*if_icmpge {reexecute=0 rethrow=0 return_oop=0}
+              │    ││                                                ; - java.math.MutableBigInteger::normalize@40 (line 398)
+              │    ││                                                ; - java.math.BigInteger::oddModPow@251 (line 2975)
+              │    ││                                                ;   {poll}
+  0.38%       │    ││  0x00007f17b056e4a7: mov    0x3c(%rsp),%r10d
+  0.00%       │    ││  0x00007f17b056e4ac: mov    %r10d,0x38(%rsp)
+  0.01%       │    ││  0x00007f17b056e4b1: mov    0xa8(%rsp),%r10
+  0.03%       │    ││  0x00007f17b056e4b9: mov    0xa0(%rsp),%r11
+  0.01%       │    ││  0x00007f17b056e4c1: mov    %r11,0xa8(%rsp)
+  0.01%       │    ││  0x00007f17b056e4c9: mov    %r10,0xa0(%rsp)
+  0.02%       │    ││  0x00007f17b056e4d1: mov    %ebp,0x8c(%rsp)
+  0.29%       │    ││  0x00007f17b056e4d8: xor    %r10d,%r10d
+  0.17%       │    ││  0x00007f17b056e4db: mov    %r10d,0x54(%rsp)
+  0.02%       ↘    ││  0x00007f17b056e4e0: mov    0x38(%rsp),%r11d
+  0.91%            ││  0x00007f17b056e4e5: dec    %r11d              ;*aastore {reexecute=0 rethrow=0 return_oop=0}
+                   ││                                                ; - java.math.BigInteger::oddModPow@161 (line 2962)
+  0.01%            ││  0x00007f17b056e4e8: mov    %r11d,0x3c(%rsp)
+  0.15%            ││  0x00007f17b056e4ed: mov    0x94(%rsp),%r10d
+  0.07%            ││  0x00007f17b056e4f5: test   %r10d,%r10d
+                   ││  0x00007f17b056e4f8: je     0x00007f17b056ed88  ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+                   ││                                                ; - java.math.MutableBigInteger::clear@16 (line 243)
+                   ││                                                ; - java.math.MutableBigInteger::divideKnuth@128 (line 1200)
+                   ││                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+                   ││                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+                   ││                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+                   ││  0x00007f17b056e4fe: mov    0xb0(%rsp),%r11d
+  0.10%            ││  0x00007f17b056e506: cmp    0x50(%rsp),%r11d
+  0.05%            ││  0x00007f17b056e50b: jae    0x00007f17b056f546
+  0.03%            ││  0x00007f17b056e511: mov    0x78(%rsp),%r10d
+  0.03%            ││  0x00007f17b056e516: mov    0x60(%rsp),%r11
+  0.21%            ││  0x00007f17b056e51b: mov    0xb0(%rsp),%ecx
+  0.05%            ││  0x00007f17b056e522: and    0x10(%r11,%rcx,4),%r10d
+  0.81%            ││  0x00007f17b056e527: test   %r10d,%r10d
+  0.11%            ││  0x00007f17b056e52a: setne  %r11b
+  0.67%            ││  0x00007f17b056e52e: movzbl %r11b,%r11d
+  0.18%            ││  0x00007f17b056e532: or     %r8d,%r11d         ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+                   ││                                                ; - java.math.BigInteger::primitiveLeftShift@77 (line 2641)
+                   ││                                                ; - java.math.BigInteger::leftShift@69 (line 2608)
+                   ││                                                ; - java.math.BigInteger::oddModPow@213 (line 2970)
+  0.46%            ││  0x00007f17b056e535: mov    %r11d,0x88(%rsp)
+  0.68%            ││  0x00007f17b056e53d: mov    0x78(%rsp),%r10d
+  0.00%            ││  0x00007f17b056e542: shr    %r10d              ;*iaload {reexecute=0 rethrow=0 return_oop=0}
+                   ││                                                ; - java.math.BigInteger::primitiveLeftShift@47 (line 2638)
+                   ││                                                ; - java.math.BigInteger::leftShift@69 (line 2608)
+                   ││                                                ; - java.math.BigInteger::oddModPow@213 (line 2970)
+  0.01%            ││  0x00007f17b056e545: mov    %r10d,0x78(%rsp)
+  0.00%            ││  0x00007f17b056e54a: test   %r10d,%r10d
+  0.01%            ││  0x00007f17b056e54d: je     0x00007f17b056e6f6  ;*aastore {reexecute=0 rethrow=0 return_oop=0}
+                   ││                                                ; - java.math.BigInteger::oddModPow@161 (line 2962)
+  0.01%            ││  0x00007f17b056e553: mov    0x6c(%rsp),%r10d
+  0.07%            ││  0x00007f17b056e558: and    0x88(%rsp),%r10d
+  3.83%            ││  0x00007f17b056e560: test   %r10d,%r10d
+  0.50%        ╭   ││  0x00007f17b056e563: je     0x00007f17b056e5f8  ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+               │   ││                                                ; - java.math.MutableBigInteger::clear@16 (line 243)
+               │   ││                                                ; - java.math.MutableBigInteger::divideKnuth@128 (line 1200)
+               │   ││                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+               │   ││                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+               │   ││                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+               │   ││  0x00007f17b056e569: mov    0x38(%rsp),%r10d
+  0.67%        │   ││  0x00007f17b056e56e: sub    0x68(%rsp),%r10d
+  0.03%        │   ││  0x00007f17b056e573: dec    %r10d              ;*aastore {reexecute=0 rethrow=0 return_oop=0}
+               │   ││                                                ; - java.math.BigInteger::oddModPow@161 (line 2962)
+  0.00%        │   ││  0x00007f17b056e576: mov    %r10d,0x5c(%rsp)
+  0.08%        │   ││  0x00007f17b056e57b: mov    0x88(%rsp),%r11d
+  0.02%        │   ││  0x00007f17b056e583: test   $0x1,%r11d
+  0.06%        │╭  ││  0x00007f17b056e58a: jne    0x00007f17b056e5c3
+               ││  ││  0x00007f17b056e58c: nopl   0x0(%rax)          ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+               ││  ││                                                ; - java.math.MutableBigInteger::&lt;init&gt;@11 (line 112)
+               ││  ││                                                ; - java.math.MutableBigInteger::divideKnuth@178 (line 1207)
+               ││  ││                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+               ││  ││                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+               ││  ││                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.15%        ││↗ ││  0x00007f17b056e590: mov    0x108(%r15),%r10
+  0.17%        │││ ││  0x00007f17b056e597: mov    0x88(%rsp),%r11d
+  0.02%        │││ ││  0x00007f17b056e59f: shr    %r11d              ;*if_icmpge {reexecute=0 rethrow=0 return_oop=0}
+               │││ ││                                                ; - java.math.MutableBigInteger::normalize@40 (line 398)
+               │││ ││                                                ; - java.math.BigInteger::oddModPow@251 (line 2975)
+  0.00%        │││ ││  0x00007f17b056e5a2: mov    %r11d,0x88(%rsp)
+  0.01%        │││ ││  0x00007f17b056e5aa: mov    0x5c(%rsp),%r8d
+  0.12%        │││ ││  0x00007f17b056e5af: inc    %r8d               ;*iastore {reexecute=0 rethrow=0 return_oop=0}
+               │││ ││                                                ; - java.math.BigInteger::primitiveLeftShift@77 (line 2641)
+               │││ ││                                                ; - java.math.BigInteger::leftShift@69 (line 2608)
+               │││ ││                                                ; - java.math.BigInteger::oddModPow@213 (line 2970)
+  0.00%        │││ ││  0x00007f17b056e5b2: mov    %r8d,0x5c(%rsp)    ; ImmutableOopMap{[32]=Derived_oop_[128] [88]=NarrowOop [96]=Oop [112]=Oop [128]=Oop [160]=Oop [168]=Oop }
+               │││ ││                                                ;*goto {reexecute=1 rethrow=0 return_oop=0}
+               │││ ││                                                ; - java.math.BigInteger::oddModPow@615 (line 3055)
+  0.06%        │││ ││  0x00007f17b056e5b7: test   %eax,(%r10)        ;*invokespecial &lt;init&gt; {reexecute=0 rethrow=0 return_oop=0}
+               │││ ││                                                ; - java.math.MutableBigInteger::&lt;init&gt;@1 (line 111)
+               │││ ││                                                ; - java.math.MutableBigInteger::divideKnuth@178 (line 1207)
+               │││ ││                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+               │││ ││                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+               │││ ││                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+               │││ ││                                                ;   {poll}
+  0.01%        │││ ││  0x00007f17b056e5ba: test   $0x1,%r11d
+  0.03%        ││╰ ││  0x00007f17b056e5c1: je     0x00007f17b056e590
+               │↘  ││  0x00007f17b056e5c3: mov    0x88(%rsp),%r8d
+  0.69%        │   ││  0x00007f17b056e5cb: shr    %r8d               ;*aastore {reexecute=0 rethrow=0 return_oop=0}
+               │   ││                                                ; - java.math.BigInteger::oddModPow@161 (line 2962)
+  0.02%        │   ││  0x00007f17b056e5ce: cmp    0x6c(%rsp),%r8d
+  0.18%        │   ││  0x00007f17b056e5d3: jae    0x00007f17b056f716
+               │   ││  0x00007f17b056e5d9: mov    0x70(%rsp),%r10
+               │   ││  0x00007f17b056e5de: mov    0x10(%r10,%r8,4),%r10d  ;*if_icmpge {reexecute=0 rethrow=0 return_oop=0}
+               │   ││                                                ; - java.math.MutableBigInteger::normalize@40 (line 398)
+               │   ││                                                ; - java.math.BigInteger::oddModPow@251 (line 2975)
+  0.87%        │   ││  0x00007f17b056e5e3: mov    %r10d,0xb4(%rsp)
+  0.00%        │   ││  0x00007f17b056e5eb: xor    %r11d,%r11d
+               │   ││  0x00007f17b056e5ee: mov    %r11d,0x88(%rsp)
+  0.00%        │  ╭││  0x00007f17b056e5f6: jmp    0x00007f17b056e607
+               ↘  │││  0x00007f17b056e5f8: mov    %r9,%r11
+  0.34%           │││  0x00007f17b056e5fb: shr    $0x3,%r11          ;*ifeq {reexecute=0 rethrow=0 return_oop=0}
+                  │││                                                ; - java.math.BigInteger::implMontgomeryMultiplyChecks@3 (line 2817)
+                  │││                                                ; - java.math.BigInteger::montgomeryMultiply@6 (line 2793)
+                  │││                                                ; - java.math.BigInteger::oddModPow@674 (line 3068)
+  0.07%           │││  0x00007f17b056e5ff: mov    %r11d,0xb4(%rsp)   ;*aastore {reexecute=0 rethrow=0 return_oop=0}
+                  │││                                                ; - java.math.BigInteger::oddModPow@161 (line 2962)
+  0.26%           ↘││  0x00007f17b056e607: mov    0x3c(%rsp),%r11d
+  0.04%            ││  0x00007f17b056e60c: cmp    0x5c(%rsp),%r11d
+  0.11%            ╰│  0x00007f17b056e611: jne    0x00007f17b056e3dd  ;*invokevirtual compare {reexecute=0 rethrow=0 return_oop=0}
+                    │                                                ; - java.math.MutableBigInteger::divideKnuth@52 (line 1187)
+                    │                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+                    │                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+                    │                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+                    │  0x00007f17b056e617: mov    0x54(%rsp),%r10d
+                    │  0x00007f17b056e61c: test   %r10d,%r10d
+  0.09%             │  0x00007f17b056e61f: jne    0x00007f17b056eda0  ;*aload_0 {reexecute=0 rethrow=0 return_oop=0}
+                    │                                                ; - java.math.MutableBigInteger::clear@23 (line 244)
+                    │                                                ; - java.math.MutableBigInteger::divideKnuth@128 (line 1200)
+                    │                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+                    │                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+                    │                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.02%             │  0x00007f17b056e625: mov    0xa0(%rsp),%r10
+  0.06%             │  0x00007f17b056e62d: mov    0xc(%r10),%ebp     ;*newarray {reexecute=0 rethrow=0 return_oop=0}
+                    │                                                ; - java.math.MutableBigInteger::&lt;init&gt;@11 (line 112)
+                    │                                                ; - java.math.MutableBigInteger::divideKnuth@178 (line 1207)
+                    │                                                ; - java.math.MutableBigInteger::divide@27 (line 1153)
+                    │                                                ; - java.math.MutableBigInteger::divide@4 (line 1147)
+                    │                                                ; - java.math.BigInteger::oddModPow@260 (line 2978)
+  0.02%             │  0x00007f17b056e631: mov    0x7c(%rsp),%r11d
+                    │  0x00007f17b056e636: cmp    %ebp,%r11d
+  0.00%             │  0x00007f17b056e639: jae    0x00007f17b056fb2e
+                    │  0x00007f17b056e63f: mov    0xb4(%rsp),%r10d
+  0.56%             │  0x00007f17b056e647: mov    0xc(%r12,%r10,8),%r9d  ; implicit exception: dispatches to 0x00007f17b05704af
+  0.45%             │  0x00007f17b056e64c: mov    0x90(%rsp),%r11d
+                    │  0x00007f17b056e654: cmp    %r9d,%r11d
+  0.02%             │  0x00007f17b056e657: jg     0x00007f17b056fbb2
+                    │  0x00007f17b056e65d: cmp    0x8c(%rsp),%r11d
+  0.06%             │  0x00007f17b056e665: jg     0x00007f17b056fc36
+                    │  0x00007f17b056e66b: mov    0x8c(%rsp),%r11d
+                    │  0x00007f17b056e673: cmp    0x90(%rsp),%r11d
+  0.00%             ╰  0x00007f17b056e67b: jge    0x00007f17b056e359  ;*aastore {reexecute=0 rethrow=0 return_oop=0}
+                                                                     ; - java.math.BigInteger::oddModPow@161 (line 2962)
+                       0x00007f17b056e681: mov    $0xffffff4d,%esi
+                       0x00007f17b056e686: mov    0x58(%rsp),%ebp
+                       0x00007f17b056e68a: mov    0x80(%rsp),%r10
+                       0x00007f17b056e692: mov    %r10,(%rsp)
+                       0x00007f17b056e696: mov    0x90(%rsp),%r11d
+                       0x00007f17b056e69e: mov    %r11d,0x8(%rsp)
+                       0x00007f17b056e6a3: mov    0x68(%rsp),%r10d
+                       0x00007f17b056e6a8: mov    %r10d,0xc(%rsp)
+                       0x00007f17b056e6ad: mov    0x3c(%rsp),%r11d
+....................................................................................................
+ 23.05%  <total for region 1>
+
+....[Hottest Region 2]..............................................................................
+libjvm.so, montgomery_multiply+0x0 (114 bytes) 
+
+ <no assembly is recorded, native region>
+....................................................................................................
+ 12.62%  <total for region 2>
+
+....[Hottest Region 3]..............................................................................
+libjvm.so, SharedRuntime::montgomery_square+0x0 (332 bytes) 
+
+ <no assembly is recorded, native region>
+....................................................................................................
+ 10.94%  <total for region 3>
+
+....[Hottest Regions]...............................................................................
+ 23.05%         c2, level 4  java.math.BigInteger::oddModPow, version 843 (1260 bytes) 
+ 12.62%           libjvm.so  montgomery_multiply+0x0 (114 bytes) 
+ 10.94%           libjvm.so  SharedRuntime::montgomery_square+0x0 (332 bytes) 
+  4.32%           libjvm.so  SharedRuntime::montgomery_multiply+0x0 (340 bytes) 
+  2.93%         c2, level 4  java.math.MutableBigInteger::divideOneWord, version 813 (172 bytes) 
+  2.48%         c2, level 4  java.math.BigInteger::oddModPow, version 843 (256 bytes) 
+  2.21%         c2, level 4  java.math.BigInteger::oddModPow, version 843 (434 bytes) 
+  2.04%         c2, level 4  java.math.BigInteger::oddModPow, version 843 (420 bytes) 
+  2.02%           libjvm.so  montgomery_multiply+0x163 (36 bytes) 
+  1.77%         c2, level 4  java.math.BigInteger::passesMillerRabin, version 821 (420 bytes) 
+  1.71%         c2, level 4  java.math.BigInteger::oddModPow, version 843 (435 bytes) 
+  1.71%         c2, level 4  java.math.BigInteger::oddModPow, version 843 (534 bytes) 
+  1.62%        runtime stub  StubRoutines::jint_disjoint_arraycopy (65 bytes) 
+  1.49%         c2, level 4  java.math.BigInteger::oddModPow, version 843 (251 bytes) 
+  1.47%           libjvm.so  montgomery_multiply+0x1b6 (20 bytes) 
+  1.44%        runtime stub  StubRoutines::jlong_disjoint_arraycopy (112 bytes) 
+  1.26%         c2, level 4  java.math.BigInteger::montReduce, version 768 (474 bytes) 
+  1.23%           libjvm.so  ParallelTaskTerminator::offer_termination+0xbc (22 bytes) 
+  1.19%           libjvm.so  SpinPause+0x0 (9 bytes) 
+  1.14%         c2, level 4  java.math.BigInteger::passesMillerRabin, version 821 (405 bytes) 
+ 21.37%  <...other 419 warm regions...>
+....................................................................................................
+100.00%  <totals>
+
+....[Hottest Methods (after inlining)]..............................................................
+ 41.36%         c2, level 4  java.math.BigInteger::oddModPow, version 843 
+ 12.62%           libjvm.so  montgomery_multiply+0x0 
+ 10.94%           libjvm.so  SharedRuntime::montgomery_square+0x0 
+  6.95%         c2, level 4  java.math.BigInteger::passesMillerRabin, version 821 
+  5.13%         c2, level 4  java.math.MutableBigInteger::divideOneWord, version 813 
+  4.32%           libjvm.so  SharedRuntime::montgomery_multiply+0x0 
+  2.61%        runtime stub  StubRoutines::jint_disjoint_arraycopy 
+  2.37%         c2, level 4  java.math.BigInteger::montReduce, version 768 
+  2.02%           libjvm.so  montgomery_multiply+0x163 
+  1.81%         c2, level 4  java.math.BigInteger::modPow, version 804 
+  1.47%           libjvm.so  montgomery_multiply+0x1b6 
+  1.44%        runtime stub  StubRoutines::jlong_disjoint_arraycopy 
+  1.23%           libjvm.so  ParallelTaskTerminator::offer_termination+0xbc 
+  1.19%           libjvm.so  SpinPause+0x0 
+  1.11%        runtime stub  StubRoutines::mulAdd 
+  0.81%           libjvm.so  montgomery_multiply+0xd1 
+  0.74%         c2, level 4  java.util.stream.Streams$RangeLongSpliterator::forEachRemaining, version 862 
+  0.25%         c2, level 4  java.math.BigInteger::isProbablePrime, version 873 
+  0.14%   [kernel.kallsyms]  finish_task_switch+0x69 
+  0.12%   [kernel.kallsyms]  futex_wait_queue_me+0xc8 
+  1.39%  <...other 355 warm methods...>
+....................................................................................................
+100.00%  <totals>
+
+....[Distribution by Source]........................................................................
+ 58.73%         c2, level 4
+ 35.02%           libjvm.so
+  5.16%        runtime stub
+  0.98%   [kernel.kallsyms]
+  0.06%        libc-2.24.so
+  0.02%  libpthread-2.24.so
+  0.00%              [vdso]
+  0.00%          ld-2.24.so
+  0.00%              kvm.ko
+  0.00%         interpreter
+  0.00%             nvme.ko
+  0.00%      perf-16302.map
+  0.00%             ext4.ko
+....................................................................................................
+100.00%  <totals>
+
+
+
+# Run complete. Total time: 00:02:23
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark             (max)  (min)  Mode  Cnt   Score   Error  Units
+PiBench.test       10000000      2    ss    3  23.030 ± 2.423   s/op
+PiBench.test:·asm  10000000      2    ss          NaN            ---
